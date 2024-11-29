@@ -61,7 +61,7 @@ const DetectingPage = () => {
             <span>min</span> <span>sec</span>
           </TimeLabel>
         </TimerBox>
-        <Button $backgroundColor={"#E9E9EB"} txt={"학습 종료"} />
+        {/* <Button $backgroundColor={"#E9E9EB"} txt={"학습 종료"} /> */}
       </Wrapper>
     </div>
   );
@@ -82,7 +82,6 @@ const SubText = styled.div`
   margin-top: 120px;
   color: #000;
   text-align: center;
-  font-family: "Pretendard";
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -105,7 +104,6 @@ const TimerBox = styled.div`
 const TimeDisplay = styled.div`
   position: relative;
   display: flex;
-  font-family: "Pretendard";
   font-style: normal;
   flex-shrink: 0;
   color: #1d1b20;

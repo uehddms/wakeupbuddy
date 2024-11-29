@@ -63,7 +63,6 @@ const SubText = styled.div`
   margin-top: 14px;
   color: #000;
   text-align: center;
-  font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
