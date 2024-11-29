@@ -2,31 +2,25 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const SettingTime = () => {
-  const [studyTime, setStudyTime] = useState(30); // 학습 시간 상태
+  const [duration, setDuration] = useState(30); // 학습 시간 상태
   const [isChange, setIsChange] = useState(false); // 배경색 변경 여부 상태
-  const [errorMessage, setErrorMessage] = useState(""); // 에러 메시지 상태
-  const [isValid, setIsValid] = useState(true); // 유효성 상태
 
   const handleCancel = () => {
     let baseTime = 30;
-    setStudyTime(baseTime);
-    localStorage.setItem("studyTime", baseTime);
+    setDuration(baseTime);
+    localStorage.setItem("duration", baseTime);
     setIsChange(false); // 변경 상태 초기화
-    setErrorMessage(""); // 취소 시 에러 메시지 초기화
-    setIsValid(true); // 유효성 초기화
   };
 
   const handleTimeChange = (e) => {
-    // 숫자인지 확인 및 1~60 범위 제한
-    if (isInteger(value)) {
-      setErrorMessage(""); // 에러 메시지 제거
-      setStudyTime(e.target.value);
-      setIsChange(true); // 값 변경 시 isChange를 true로 설정
-      const value = parseInt(e.target.value, 10);
-      localStorage.setItem("studyTime", value);
-    } else {
-      setErrorMessage("* 학습 시간은 숫자로 입력해 주세요."); // 유효하지 않은 입력 처리
+    const inputValue = e.target.value;
+    if (isNaN(inputValue)) {
+      return;
     }
+    const value = parseInt(inputValue, 10);
+    setDuration(value);
+    setIsChange(true);
+    localStorage.setItem("duration", value);
   };
 
   return (
@@ -38,7 +32,7 @@ const SettingTime = () => {
       <Content>
         <InputTime
           type="number"
-          value={studyTime}
+          value={duration}
           onChange={handleTimeChange}
           min="1" // 최소값 설정
           // max="999" 최대값 설정
@@ -47,7 +41,7 @@ const SettingTime = () => {
         />
         <MinText>min</MinText>
       </Content>
-      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+      <ErrorMessage>* 숫자만 입력해주세요.</ErrorMessage>
     </Box>
   );
 };
@@ -130,13 +124,11 @@ const ResetBtn = styled.div`
 `;
 
 const ErrorMessage = styled.div`
-  text-align: center;
+  text-align: left;
   margin: 0;
-  align-self: center;
-  margin-top: -7px;
+  margin-top: 7px;
+  margin-left: 65px;
   color: #e15cd8;
-  text-align: center;
-  font-family: Pretendard;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
