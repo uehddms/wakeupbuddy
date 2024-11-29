@@ -4,13 +4,21 @@ import TitleText from "../components/common/TitleText";
 import ResultBox from "../components/result/ResultBox";
 import SampleImg from "../assets/img/sample-graph.png";
 
-const MOCKRESULT = [
-  { id: 1, graph: SampleImg, total: 3, drowsiness: 10, vibe: 5, study: 4 },
-];
-
 const ResultPage = () => {
   const username = localStorage.getItem("username");
-  const [resultInfo, setResultInfo] = useState(MOCKRESULT);
+  const duration = localStorage.getItem("duration");
+
+  const resultInfo = [
+    {
+      id: 1,
+      graph: SampleImg,
+      total: duration,
+      drowsiness: duration * 0.6,
+      vibe: Math.floor(Math.random() * duration) + 1,
+      study: duration * 0.4,
+    },
+  ];
+
   return (
     <div>
       {resultInfo.map((result) => (

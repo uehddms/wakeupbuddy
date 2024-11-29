@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { BeatLoader } from "react-spinners";
 import TitleText from "../components/common/TitleText";
+import { useNavigate } from "react-router-dom";
 
 const WritingReport = () => {
+  const navigate = useNavigate();
   const username = localStorage.getItem("username");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimeout(() => {
+        navigate("/result");
+      }, 2000);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
   return (
     <div>
       <Wrapper>
