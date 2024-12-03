@@ -8,7 +8,7 @@ const ResultBox = ({ total, drowsiness, vibe, study }) => {
         <Total>📚 총 학습 시간 : {total} 분</Total>
         <Drowsiness>😴 졸음 시간 : {drowsiness} 분</Drowsiness>
         <Vibe>📳 일어나친구야! : {vibe} 회</Vibe>
-        <Study>= 🔥 졸지 않고 공부한 시간 : {study} 분</Study>
+        <Study>🔥 졸지 않고 공부한 시간 : {study} 분</Study>
       </Wrapper>
     </div>
   );
